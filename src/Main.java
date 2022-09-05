@@ -30,7 +30,6 @@ public class Main {
             default -> -1;
         };
     }
-
     static String ArabicToRoman (int i) {
         StringBuilder RomeNumber = new StringBuilder();
         var map = new HashMap<Integer, String>();
@@ -66,8 +65,7 @@ public class Main {
         }
         return RomeNumber.toString();
     }
-
-     static String calc(String input) throws IOException {
+     static String calc(String input) throws IOException, NumberFormatException {
         String output;
         int x = 0;
         int y = 0;
@@ -109,17 +107,17 @@ public class Main {
                 output = Integer.toString(result) ;
             }
             else {
-                if (result < 1) {
+                if (result > 10) {
                     throw new NumberFormatException("Ошибка");}
                 output = ArabicToRoman(result);
             }
         } else throw new IOException("Ошибка");
         return output;
     }
-
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
         String input = in.nextLine();
         System.out.println(calc(input));
     }
 }
+
